@@ -1,5 +1,5 @@
 spec:
-  name: sample-php
+  name: php-generator
   services:
   - environment_slug: php
     git:

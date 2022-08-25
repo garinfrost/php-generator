@@ -1,8 +1,7 @@
-name: sample-php
+name: php-generator
 services:
 - environment_slug: php
   github:
     branch: main
     deploy_on_push: true
-    repo: digitalocean/sample-php
-  name: sample-php
+    repo: garinfrost/php-generator
