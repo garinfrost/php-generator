@@ -4,5 +4,5 @@ spec:
   - environment_slug: php
     git:
       branch: main
-      repo_clone_url: https://github.com/digitalocean/sample-php.git
-    name: sample-php
+      repo_clone_url: https://github.com/garinfrost/php-generator.git
+    name: php-generator
