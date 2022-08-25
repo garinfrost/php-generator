@@ -33,7 +33,7 @@ function GetGlobalConnectionOptions()
 
 function HasAdminPage()
 {
-    return false;
+    return true;
 }
 
 function HasHomePage()
@@ -81,7 +81,7 @@ function GetPagesFooter()
 
 function ApplyCommonPageSettings(Page $page, Grid $grid)
 {
-    $page->SetShowUserAuthBar(false);
+    $page->SetShowUserAuthBar(true);
     $page->setShowNavigation(true);
     $page->OnGetCustomExportOptions->AddListener('Global_OnGetCustomExportOptions');
     $page->getDataset()->OnGetFieldValue->AddListener('Global_OnGetFieldValue');
