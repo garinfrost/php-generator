@@ -14902,7 +14902,6 @@
         {
             $quickFilter
                 ->addColumn($columns['id'])
-                ->addColumn($columns['updated'])
                 ->addColumn($columns['BatchID'])
                 ->addColumn($columns['Template'])
                 ->addColumn($columns['Batch'])
@@ -14912,12 +14911,6 @@
                 ->addColumn($columns['Brews Blended from this Batch'])
                 ->addColumn($columns['Brews Blended into this Batch'])
                 ->addColumn($columns['Brews'])
-                ->addColumn($columns['Total Brews Calc 1'])
-                ->addColumn($columns['Total Brews Calc 2'])
-                ->addColumn($columns['Brew Date Start Calc 1'])
-                ->addColumn($columns['Brew Date End Calc 1'])
-                ->addColumn($columns['Brew Date Start Calc 2'])
-                ->addColumn($columns['Brew Date End Calc 2'])
                 ->addColumn($columns['Brew Date Start'])
                 ->addColumn($columns['Brew Date End'])
                 ->addColumn($columns['Brew Days'])
@@ -14940,13 +14933,7 @@
                 ->addColumn($columns['Bbls'])
                 ->addColumn($columns['Color'])
                 ->addColumn($columns['IBU'])
-                ->addColumn($columns['OG-A'])
-                ->addColumn($columns['OG-B'])
-                ->addColumn($columns['OG-C'])
-                ->addColumn($columns['OG-D'])
                 ->addColumn($columns['OG-AB'])
-                ->addColumn($columns['OG-ABC'])
-                ->addColumn($columns['OG-ABCD'])
                 ->addColumn($columns['OG'])
                 ->addColumn($columns['FG_Min'])
                 ->addColumn($columns['Current Gravity'])
@@ -15029,13 +15016,8 @@
         protected function setupColumnFilter(ColumnFilter $columnFilter)
         {
             $columnFilter
-                ->setOptionsFor('updated')
                 ->setOptionsFor('Template')
                 ->setOptionsFor('Brew Date')
-                ->setOptionsFor('Brew Date Start Calc 1')
-                ->setOptionsFor('Brew Date End Calc 1')
-                ->setOptionsFor('Brew Date Start Calc 2')
-                ->setOptionsFor('Brew Date End Calc 2')
                 ->setOptionsFor('Brew Date Start')
                 ->setOptionsFor('Brew Date End')
                 ->setOptionsFor('Canned');
@@ -15056,27 +15038,6 @@
                     FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
                     FilterConditionOperator::IS_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new DateTimeEdit('updated_edit', false, 'Y-m-d H:i:s');
-            
-            $filterBuilder->addColumn(
-                $columns['updated'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::DATE_EQUALS => $main_editor,
-                    FilterConditionOperator::DATE_DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::TODAY => null,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -15272,126 +15233,6 @@
                     FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
                     FilterConditionOperator::IS_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('total_brews_calc_1_edit');
-            
-            $filterBuilder->addColumn(
-                $columns['Total Brews Calc 1'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('total_brews_calc_2_edit');
-            
-            $filterBuilder->addColumn(
-                $columns['Total Brews Calc 2'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new DateTimeEdit('brew_date_start_calc_1_edit', false, 'Y-m-d');
-            
-            $filterBuilder->addColumn(
-                $columns['Brew Date Start Calc 1'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::DATE_EQUALS => $main_editor,
-                    FilterConditionOperator::DATE_DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::TODAY => null,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new DateTimeEdit('brew_date_end_calc_1_edit', false, 'Y-m-d');
-            
-            $filterBuilder->addColumn(
-                $columns['Brew Date End Calc 1'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::DATE_EQUALS => $main_editor,
-                    FilterConditionOperator::DATE_DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::TODAY => null,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new DateTimeEdit('brew_date_start_calc_2_edit', false, 'Y-m-d');
-            
-            $filterBuilder->addColumn(
-                $columns['Brew Date Start Calc 2'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::DATE_EQUALS => $main_editor,
-                    FilterConditionOperator::DATE_DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::TODAY => null,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new DateTimeEdit('brew_date_end_calc_2_edit', false, 'Y-m-d');
-            
-            $filterBuilder->addColumn(
-                $columns['Brew Date End Calc 2'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::DATE_EQUALS => $main_editor,
-                    FilterConditionOperator::DATE_DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::TODAY => null,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -15925,161 +15766,11 @@
                 )
             );
             
-            $main_editor = new TextEdit('og-a_edit');
-            $main_editor->SetMaxLength(64);
-            
-            $filterBuilder->addColumn(
-                $columns['OG-A'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('og-b_edit');
-            $main_editor->SetMaxLength(64);
-            
-            $filterBuilder->addColumn(
-                $columns['OG-B'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('og-c_edit');
-            $main_editor->SetMaxLength(64);
-            
-            $filterBuilder->addColumn(
-                $columns['OG-C'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('og-d_edit');
-            $main_editor->SetMaxLength(64);
-            
-            $filterBuilder->addColumn(
-                $columns['OG-D'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
             $main_editor = new TextEdit('og-ab_edit');
             $main_editor->SetMaxLength(64);
             
             $filterBuilder->addColumn(
                 $columns['OG-AB'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('og-abc_edit');
-            $main_editor->SetMaxLength(64);
-            
-            $filterBuilder->addColumn(
-                $columns['OG-ABC'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('og-abcd_edit');
-            $main_editor->SetMaxLength(64);
-            
-            $filterBuilder->addColumn(
-                $columns['OG-ABCD'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -18105,14 +17796,6 @@
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $grid->AddViewColumn($column);
             //
-            // View column for updated field
-            //
-            $column = new DateTimeViewColumn('updated', 'updated', 'Updated', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d H:i:s');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
             // View column for BatchID field
             //
             $column = new NumberViewColumn('BatchID', 'BatchID', 'Batch ID', $this->dataset);
@@ -18127,6 +17810,8 @@
             //
             $column = new NumberViewColumn('Template', 'Template_id', 'Template', $this->dataset);
             $column->SetOrderable(true);
+            $column->setHrefTemplate('%Template%');
+            $column->setTarget('_self');
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
@@ -18189,58 +17874,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for Total Brews Calc 1 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 1', 'Total Brews Calc 1', 'Total Brews Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for Total Brews Calc 2 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 2', 'Total Brews Calc 2', 'Total Brews Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for Brew Date Start Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', 'Brew Date Start Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for Brew Date End Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', 'Brew Date End Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for Brew Date Start Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', 'Brew Date Start Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for Brew Date End Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', 'Brew Date End Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $grid->AddViewColumn($column);
             //
@@ -18406,51 +18039,9 @@
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $grid->AddViewColumn($column);
             //
-            // View column for OG-A field
-            //
-            $column = new TextViewColumn('OG-A', 'OG-A', 'OG-A', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for OG-B field
-            //
-            $column = new TextViewColumn('OG-B', 'OG-B', 'OG-B', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for OG-C field
-            //
-            $column = new TextViewColumn('OG-C', 'OG-C', 'OG-C', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for OG-D field
-            //
-            $column = new TextViewColumn('OG-D', 'OG-D', 'OG-D', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
             // View column for OG-AB field
             //
             $column = new TextViewColumn('OG-AB', 'OG-AB', 'OG-AB', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for OG-ABC field
-            //
-            $column = new TextViewColumn('OG-ABC', 'OG-ABC', 'OG-ABC', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $grid->AddViewColumn($column);
-            //
-            // View column for OG-ABCD field
-            //
-            $column = new TextViewColumn('OG-ABCD', 'OG-ABCD', 'OG-ABCD', $this->dataset);
             $column->SetOrderable(true);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $grid->AddViewColumn($column);
@@ -19010,14 +18601,6 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for updated field
-            //
-            $column = new DateTimeViewColumn('updated', 'updated', 'Updated', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d H:i:s');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
             // View column for BatchID field
             //
             $column = new NumberViewColumn('BatchID', 'BatchID', 'Batch ID', $this->dataset);
@@ -19032,6 +18615,8 @@
             //
             $column = new NumberViewColumn('Template', 'Template_id', 'Template', $this->dataset);
             $column->SetOrderable(true);
+            $column->setHrefTemplate('%Template%');
+            $column->setTarget('_self');
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
@@ -19094,58 +18679,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for Total Brews Calc 1 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 1', 'Total Brews Calc 1', 'Total Brews Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for Total Brews Calc 2 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 2', 'Total Brews Calc 2', 'Total Brews Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', 'Brew Date Start Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', 'Brew Date End Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', 'Brew Date Start Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', 'Brew Date End Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
             $grid->AddSingleRecordViewColumn($column);
             
             //
@@ -19311,51 +18844,9 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for OG-A field
-            //
-            $column = new TextViewColumn('OG-A', 'OG-A', 'OG-A', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for OG-B field
-            //
-            $column = new TextViewColumn('OG-B', 'OG-B', 'OG-B', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for OG-C field
-            //
-            $column = new TextViewColumn('OG-C', 'OG-C', 'OG-C', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for OG-D field
-            //
-            $column = new TextViewColumn('OG-D', 'OG-D', 'OG-D', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
             // View column for OG-AB field
             //
             $column = new TextViewColumn('OG-AB', 'OG-AB', 'OG-AB', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for OG-ABC field
-            //
-            $column = new TextViewColumn('OG-ABC', 'OG-ABC', 'OG-ABC', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for OG-ABCD field
-            //
-            $column = new TextViewColumn('OG-ABCD', 'OG-ABCD', 'OG-ABCD', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddSingleRecordViewColumn($column);
             
@@ -19903,1245 +19394,11 @@
     
         protected function AddEditColumns(Grid $grid)
         {
-            //
-            // Edit column for updated field
-            //
-            $editor = new DateTimeEdit('updated_edit', false, 'Y-m-d H:i:s');
-            $editColumn = new CustomEditColumn('Updated', 'updated', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for BatchID field
-            //
-            $editor = new TextEdit('batchid_edit');
-            $editColumn = new CustomEditColumn('Batch ID', 'BatchID', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Template field
-            //
-            $editor = new DynamicCombobox('template_edit', $this->CreateLinkBuilder());
-            $editor->setAllowClear(true);
-            $editor->setMinimumInputLength(0);
-            $lookupDataset = new TableDataset(
-                MySqlIConnectionFactory::getInstance(),
-                GetConnectionOptions(),
-                '`Templates`');
-            $lookupDataset->addFields(
-                array(
-                    new IntegerField('id', true, true, true),
-                    new DateTimeField('updated', true),
-                    new StringField('Template', true, true),
-                    new StringField('Brand/Name', true),
-                    new StringField('Style'),
-                    new IntegerField('Color'),
-                    new IntegerField('IBU'),
-                    new IntegerField('OG_Avg'),
-                    new IntegerField('OG_Override'),
-                    new IntegerField('OG_Eq'),
-                    new IntegerField('ABV_Avg'),
-                    new IntegerField('ABV_Avg_Dec'),
-                    new IntegerField('ABV_Eq'),
-                    new IntegerField('Attenuation_Override'),
-                    new IntegerField('Attenuation_Override_Dec'),
-                    new IntegerField('Attenuation_Avg'),
-                    new IntegerField('Attenuation_Avg_Dec'),
-                    new IntegerField('Attenuation_Eq'),
-                    new IntegerField('FG_Eq'),
-                    new StringField('Notes'),
-                    new IntegerField('Batches')
-                )
-            );
-            $lookupDataset->setOrderByField('id', 'ASC');
-            $editColumn = new DynamicLookupEditColumn('Template', 'Template', 'Template_id', 'edit_Batches_Template_search', $editor, $this->dataset, $lookupDataset, 'Template', 'id', '');
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date field
-            //
-            $editor = new DateTimeEdit('brew_date_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date', 'Brew Date', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Ingredient_Cnt field
-            //
-            $editor = new TextEdit('ingredient_cnt_edit');
-            $editColumn = new CustomEditColumn('Ingredient Cnt', 'Ingredient_Cnt', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews-Records field
-            //
-            $editor = new TextEdit('brews-records_edit');
-            $editColumn = new CustomEditColumn('Brews-Records', 'Brews-Records', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews Blended from this Batch field
-            //
-            $editor = new TextEdit('brews_blended_from_this_batch_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brews Blended From This Batch', 'Brews Blended from this Batch', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews Blended into this Batch field
-            //
-            $editor = new TextEdit('brews_blended_into_this_batch_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brews Blended Into This Batch', 'Brews Blended into this Batch', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews field
-            //
-            $editor = new TextEdit('brews_edit');
-            $editColumn = new CustomEditColumn('Brews', 'Brews', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Total Brews Calc 1 field
-            //
-            $editor = new TextEdit('total_brews_calc_1_edit');
-            $editColumn = new CustomEditColumn('Total Brews Calc 1', 'Total Brews Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Total Brews Calc 2 field
-            //
-            $editor = new TextEdit('total_brews_calc_2_edit');
-            $editColumn = new CustomEditColumn('Total Brews Calc 2', 'Total Brews Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start Calc 1 field
-            //
-            $editor = new DateTimeEdit('brew_date_start_calc_1_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End Calc 1 field
-            //
-            $editor = new DateTimeEdit('brew_date_end_calc_1_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start Calc 2 field
-            //
-            $editor = new DateTimeEdit('brew_date_start_calc_2_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End Calc 2 field
-            //
-            $editor = new DateTimeEdit('brew_date_end_calc_2_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start field
-            //
-            $editor = new DateTimeEdit('brew_date_start_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start', 'Brew Date Start', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End field
-            //
-            $editor = new DateTimeEdit('brew_date_end_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End', 'Brew Date End', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Days field
-            //
-            $editor = new TextEdit('brew_days_edit');
-            $editColumn = new CustomEditColumn('Brew Days', 'Brew Days', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Total Brews (Net) field
-            //
-            $editor = new TextEdit('total_brews_(net)_edit');
-            $editColumn = new CustomEditColumn('Total Brews (Net)', 'Total Brews (Net)', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for ProPitch field
-            //
-            $editor = new TextEdit('propitch_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Pro Pitch', 'ProPitch', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Yeast field
-            //
-            $editor = new TextEdit('yeast_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Yeast', 'Yeast', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Yeast Source field
-            //
-            $editor = new TextEdit('yeast_source_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Yeast Source', 'Yeast Source', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Yeast from FV field
-            //
-            $editor = new TextEdit('yeast_from_fv_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Yeast From FV', 'Yeast from FV', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Nickname field
-            //
-            $editor = new TextEdit('nickname_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Nickname', 'Nickname', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Status field
-            //
-            $editor = new TextEdit('status_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Status', 'Status', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Batch-Status field
-            //
-            $editor = new TextEdit('batch-status_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Batch-Status', 'Batch-Status', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Days Running 1 field
-            //
-            $editor = new TextEdit('days_running_1_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Days Running 1', 'Days Running 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Days Running 2 field
-            //
-            $editor = new TextEdit('days_running_2_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Days Running 2', 'Days Running 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Style field
-            //
-            $editor = new TextEdit('style_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Style', 'Style', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FV field
-            //
-            $editor = new TextEdit('fv_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('FV', 'FV', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FV Tank field
-            //
-            $editor = new TextEdit('fv_tank_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('FV Tank', 'FV Tank', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for BT field
-            //
-            $editor = new TextEdit('bt_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('BT', 'BT', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for BT Tank field
-            //
-            $editor = new TextEdit('bt_tank_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('BT Tank', 'BT Tank', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Current Tank field
-            //
-            $editor = new TextEdit('current_tank_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Current Tank', 'Current Tank', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Bbls field
-            //
-            $editor = new TextEdit('bbls_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Bbls', 'Bbls', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Color field
-            //
-            $editor = new TextEdit('color_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Color', 'Color', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for IBU field
-            //
-            $editor = new TextEdit('ibu_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('IBU', 'IBU', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-A field
-            //
-            $editor = new TextEdit('og-a_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-A', 'OG-A', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-B field
-            //
-            $editor = new TextEdit('og-b_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-B', 'OG-B', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-C field
-            //
-            $editor = new TextEdit('og-c_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-C', 'OG-C', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-D field
-            //
-            $editor = new TextEdit('og-d_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-D', 'OG-D', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-AB field
-            //
-            $editor = new TextEdit('og-ab_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-AB', 'OG-AB', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-ABC field
-            //
-            $editor = new TextEdit('og-abc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-ABC', 'OG-ABC', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-ABCD field
-            //
-            $editor = new TextEdit('og-abcd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-ABCD', 'OG-ABCD', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for OG field
-            //
-            $editor = new TextEdit('og_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG', 'OG', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FG_Min field
-            //
-            $editor = new TextEdit('fg_min_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('FG Min', 'FG_Min', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Current Gravity field
-            //
-            $editor = new TextEdit('current_gravity_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Current Gravity', 'Current Gravity', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FG field
-            //
-            $editor = new TextEdit('fg_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('FG', 'FG', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for ABV field
-            //
-            $editor = new TextEdit('abv_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('ABV', 'ABV', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Attenuation field
-            //
-            $editor = new TextEdit('attenuation_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Attenuation', 'Attenuation', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Yeast Pitch field
-            //
-            $editor = new TextEdit('yeast_pitch_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Yeast Pitch', 'Yeast Pitch', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Blend Ratio field
-            //
-            $editor = new TextEdit('blend_ratio_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Blend Ratio', 'Blend Ratio', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Notes field
-            //
-            $editor = new TextAreaEdit('notes_edit', 50, 8);
-            $editColumn = new CustomEditColumn('Notes', 'Notes', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Status2 field
-            //
-            $editor = new TextEdit('status2_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Status2', 'Status2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Dry Hop Date field
-            //
-            $editor = new TextEdit('dry_hop_date_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dry Hop Date', 'Dry Hop Date', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Dry Hop Date Formula field
-            //
-            $editor = new TextEdit('dry_hop_date_formula_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dry Hop Date Formula', 'Dry Hop Date Formula', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Crash Date field
-            //
-            $editor = new TextEdit('crash_date_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Crash Date', 'Crash Date', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brite Tank Date field
-            //
-            $editor = new TextEdit('brite_tank_date_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brite Tank Date', 'Brite Tank Date', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Gone Date field
-            //
-            $editor = new TextEdit('gone_date_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Gone Date', 'Gone Date', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Dry Hop Days field
-            //
-            $editor = new TextEdit('dry_hop_days_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dry Hop Days', 'Dry Hop Days', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Total Days field
-            //
-            $editor = new TextEdit('total_days_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Total Days', 'Total Days', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Dry Hopped Running field
-            //
-            $editor = new TextEdit('dry_hopped_running_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dry Hopped Running', 'Dry Hopped Running', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for User field
-            //
-            $editor = new TextEdit('user_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('User', 'User', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Maximum CO2 field
-            //
-            $editor = new TextEdit('maximum_co2_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Maximum CO2', 'Maximum CO2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for CO2 Volumes field
-            //
-            $editor = new TextEdit('co2_volumes_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('CO2 Volumes', 'CO2 Volumes', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for This Batch Blended into Batch field
-            //
-            $editor = new TextEdit('this_batch_blended_into_batch_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('This Batch Blended Into Batch', 'This Batch Blended into Batch', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Batches Blended into this Batch field
-            //
-            $editor = new TextEdit('batches_blended_into_this_batch_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Batches Blended Into This Batch', 'Batches Blended into this Batch', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Calculated Days field
-            //
-            $editor = new TextEdit('calculated_days_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Calculated Days', 'Calculated Days', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Blended field
-            //
-            $editor = new TextEdit('blended_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Blended', 'Blended', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for TankLog Count field
-            //
-            $editor = new TextEdit('tanklog_count_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Tank Log Count', 'TankLog Count', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for KegLog Count field
-            //
-            $editor = new TextEdit('keglog_count_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Keg Log Count', 'KegLog Count', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Kegs Count field
-            //
-            $editor = new TextEdit('kegs_count_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Kegs Count', 'Kegs Count', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for PackageLog Count field
-            //
-            $editor = new TextEdit('packagelog_count_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Package Log Count', 'PackageLog Count', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for KegOrders Count field
-            //
-            $editor = new TextEdit('kegorders_count_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Keg Orders Count', 'KegOrders Count', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Net Bbls field
-            //
-            $editor = new TextEdit('net_bbls_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Net Bbls', 'Net Bbls', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Canned & Kegged Barrels field
-            //
-            $editor = new TextEdit('canned_&_kegged_barrels_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Canned & Kegged Barrels', 'Canned & Kegged Barrels', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Canning Runs field
-            //
-            $editor = new TextEdit('canning_runs_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Canning Runs', 'Canning Runs', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for 5G Kegs field
-            //
-            $editor = new TextEdit('5g_kegs_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('5 G Kegs', '5G Kegs', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for 50L Kegs field
-            //
-            $editor = new TextEdit('50l_kegs_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('50 L Kegs', '50L Kegs', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews-Bbls field
-            //
-            $editor = new TextEdit('brews-bbls_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brews-Bbls', 'Brews-Bbls', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews-OG field
-            //
-            $editor = new TextEdit('brews-og_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brews-OG', 'Brews-OG', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Net Beer Factor field
-            //
-            $editor = new TextEdit('net_beer_factor_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Net Beer Factor', 'Net Beer Factor', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Batch Gross Bbls Calc field
-            //
-            $editor = new TextEdit('batch_gross_bbls_calc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Batch Gross Bbls Calc', 'Batch Gross Bbls Calc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Gross Bbls field
-            //
-            $editor = new TextEdit('gross_bbls_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Gross Bbls', 'Gross Bbls', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Remaining Bbls Calc field
-            //
-            $editor = new TextEdit('remaining_bbls_calc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Remaining Bbls Calc', 'Remaining Bbls Calc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Remaining Bbls (Est) field
-            //
-            $editor = new TextEdit('remaining_bbls_(est)_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Remaining Bbls (Est)', 'Remaining Bbls (Est)', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Can Be Deleted field
-            //
-            $editor = new TextEdit('can_be_deleted_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Can Be Deleted', 'Can Be Deleted', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brews from Template field
-            //
-            $editor = new TextEdit('brews_from_template_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brews From Template', 'Brews from Template', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FermStart-DateCalc field
-            //
-            $editor = new TextEdit('fermstart-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm Start-Date Calc', 'FermStart-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FermStart-DateCalc2 field
-            //
-            $editor = new TextEdit('fermstart-datecalc2_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm Start-Date Calc2', 'FermStart-DateCalc2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FermEnd-DateCalc field
-            //
-            $editor = new TextEdit('fermend-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm End-Date Calc', 'FermEnd-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FermEnd-DateCalc2 field
-            //
-            $editor = new TextEdit('fermend-datecalc2_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm End-Date Calc2', 'FermEnd-DateCalc2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Ferm-DateCalc field
-            //
-            $editor = new TextEdit('ferm-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm-Date Calc', 'Ferm-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Ferm-DateCalc2 field
-            //
-            $editor = new TextEdit('ferm-datecalc2_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm-Date Calc2', 'Ferm-DateCalc2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for FermEnd-DateDayNumber field
-            //
-            $editor = new TextEdit('fermend-datedaynumber_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ferm End-Date Day Number', 'FermEnd-DateDayNumber', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for DryHop-DateDayAdd field
-            //
-            $editor = new TextEdit('dryhop-datedayadd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dry Hop-Date Day Add', 'DryHop-DateDayAdd', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Dryhop-DateCalc field
-            //
-            $editor = new TextEdit('dryhop-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dryhop-Date Calc', 'Dryhop-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Dryhop-DateDayNumber field
-            //
-            $editor = new TextEdit('dryhop-datedaynumber_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Dryhop-Date Day Number', 'Dryhop-DateDayNumber', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Crash-DateDayAdd field
-            //
-            $editor = new TextEdit('crash-datedayadd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Crash-Date Day Add', 'Crash-DateDayAdd', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Crash-DateCalc field
-            //
-            $editor = new TextEdit('crash-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Crash-Date Calc', 'Crash-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Crash-DateDayNumber field
-            //
-            $editor = new TextEdit('crash-datedaynumber_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Crash-Date Day Number', 'Crash-DateDayNumber', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Transfer-DateDayAdd field
-            //
-            $editor = new TextEdit('transfer-datedayadd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Transfer-Date Day Add', 'Transfer-DateDayAdd', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Transfer-DateCalc field
-            //
-            $editor = new TextEdit('transfer-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Transfer-Date Calc', 'Transfer-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Transfer-DateDayNumber field
-            //
-            $editor = new TextEdit('transfer-datedaynumber_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Transfer-Date Day Number', 'Transfer-DateDayNumber', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Package-DateDayAdd field
-            //
-            $editor = new TextEdit('package-datedayadd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Package-Date Day Add', 'Package-DateDayAdd', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Package-DateCalc field
-            //
-            $editor = new TextEdit('package-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Package-Date Calc', 'Package-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Scheduled Steps field
-            //
-            $editor = new TextEdit('scheduled_steps_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Scheduled Steps', 'Scheduled Steps', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Steps Remaining field
-            //
-            $editor = new TextEdit('steps_remaining_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Steps Remaining', 'Steps Remaining', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for PropCrash-DateCalc field
-            //
-            $editor = new TextEdit('propcrash-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Prop Crash-Date Calc', 'PropCrash-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for PropTrans-DateCalc field
-            //
-            $editor = new TextEdit('proptrans-datecalc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Prop Trans-Date Calc', 'PropTrans-DateCalc', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Size (Gallons) field
-            //
-            $editor = new TextEdit('brew_size_(gallons)_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brew Size (Gallons)', 'Brew Size (Gallons)', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew % of 7Bbl field
-            //
-            $editor = new TextEdit('brew_%_of_7bbl_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Brew % Of 7 Bbl', 'Brew % of 7Bbl', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Sum - Potential Yield field
-            //
-            $editor = new TextEdit('sum_-_potential_yield_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Sum - Potential Yield', 'Sum - Potential Yield', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Potential OG field
-            //
-            $editor = new TextEdit('potential_og_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Potential OG', 'Potential OG', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Efficiency field
-            //
-            $editor = new TextEdit('efficiency_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Efficiency', 'Efficiency', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Ratings field
-            //
-            $editor = new TextEdit('ratings_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Ratings', 'Ratings', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for CurrentTank_Name field
-            //
-            $editor = new TextEdit('currenttank_name_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Current Tank Name', 'CurrentTank_Name', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Canned field
-            //
-            $editor = new DateTimeEdit('canned_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Canned', 'Canned', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for PendingActivities field
-            //
-            $editor = new TextEdit('pendingactivities_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Pending Activities', 'PendingActivities', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for TempLogsCount field
-            //
-            $editor = new TextEdit('templogscount_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Temp Logs Count', 'TempLogsCount', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for Rating field
-            //
-            $editor = new TextEdit('rating_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('Rating', 'Rating', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
+    
         }
     
         protected function AddMultiEditColumns(Grid $grid)
         {
-            //
-            // Edit column for updated field
-            //
-            $editor = new DateTimeEdit('updated_edit', false, 'Y-m-d H:i:s');
-            $editColumn = new CustomEditColumn('Updated', 'updated', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
             //
             // Edit column for BatchID field
             //
@@ -21251,60 +19508,6 @@
             $grid->AddMultiEditColumn($editColumn);
             
             //
-            // Edit column for Total Brews Calc 1 field
-            //
-            $editor = new TextEdit('total_brews_calc_1_edit');
-            $editColumn = new CustomEditColumn('Total Brews Calc 1', 'Total Brews Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for Total Brews Calc 2 field
-            //
-            $editor = new TextEdit('total_brews_calc_2_edit');
-            $editColumn = new CustomEditColumn('Total Brews Calc 2', 'Total Brews Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start Calc 1 field
-            //
-            $editor = new DateTimeEdit('brew_date_start_calc_1_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End Calc 1 field
-            //
-            $editor = new DateTimeEdit('brew_date_end_calc_1_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start Calc 2 field
-            //
-            $editor = new DateTimeEdit('brew_date_start_calc_2_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End Calc 2 field
-            //
-            $editor = new DateTimeEdit('brew_date_end_calc_2_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
             // Edit column for Brew Date Start field
             //
             $editor = new DateTimeEdit('brew_date_start_edit', false, 'Y-m-d');
@@ -21521,71 +19724,11 @@
             $grid->AddMultiEditColumn($editColumn);
             
             //
-            // Edit column for OG-A field
-            //
-            $editor = new TextEdit('og-a_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-A', 'OG-A', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-B field
-            //
-            $editor = new TextEdit('og-b_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-B', 'OG-B', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-C field
-            //
-            $editor = new TextEdit('og-c_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-C', 'OG-C', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-D field
-            //
-            $editor = new TextEdit('og-d_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-D', 'OG-D', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
             // Edit column for OG-AB field
             //
             $editor = new TextEdit('og-ab_edit');
             $editor->SetMaxLength(64);
             $editColumn = new CustomEditColumn('OG-AB', 'OG-AB', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-ABC field
-            //
-            $editor = new TextEdit('og-abc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-ABC', 'OG-ABC', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for OG-ABCD field
-            //
-            $editor = new TextEdit('og-abcd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-ABCD', 'OG-ABCD', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
@@ -22367,16 +20510,6 @@
         protected function AddInsertColumns(Grid $grid)
         {
             //
-            // Edit column for updated field
-            //
-            $editor = new DateTimeEdit('updated_edit', false, 'Y-m-d H:i:s');
-            $editColumn = new CustomEditColumn('Updated', 'updated', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
             // Edit column for BatchID field
             //
             $editor = new TextEdit('batchid_edit');
@@ -22480,60 +20613,6 @@
             //
             $editor = new TextEdit('brews_edit');
             $editColumn = new CustomEditColumn('Brews', 'Brews', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for Total Brews Calc 1 field
-            //
-            $editor = new TextEdit('total_brews_calc_1_edit');
-            $editColumn = new CustomEditColumn('Total Brews Calc 1', 'Total Brews Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for Total Brews Calc 2 field
-            //
-            $editor = new TextEdit('total_brews_calc_2_edit');
-            $editColumn = new CustomEditColumn('Total Brews Calc 2', 'Total Brews Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start Calc 1 field
-            //
-            $editor = new DateTimeEdit('brew_date_start_calc_1_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End Calc 1 field
-            //
-            $editor = new DateTimeEdit('brew_date_end_calc_1_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date Start Calc 2 field
-            //
-            $editor = new DateTimeEdit('brew_date_start_calc_2_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for Brew Date End Calc 2 field
-            //
-            $editor = new DateTimeEdit('brew_date_end_calc_2_edit', false, 'Y-m-d');
-            $editColumn = new CustomEditColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
@@ -22755,71 +20834,11 @@
             $grid->AddInsertColumn($editColumn);
             
             //
-            // Edit column for OG-A field
-            //
-            $editor = new TextEdit('og-a_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-A', 'OG-A', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for OG-B field
-            //
-            $editor = new TextEdit('og-b_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-B', 'OG-B', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for OG-C field
-            //
-            $editor = new TextEdit('og-c_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-C', 'OG-C', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for OG-D field
-            //
-            $editor = new TextEdit('og-d_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-D', 'OG-D', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
             // Edit column for OG-AB field
             //
             $editor = new TextEdit('og-ab_edit');
             $editor->SetMaxLength(64);
             $editColumn = new CustomEditColumn('OG-AB', 'OG-AB', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for OG-ABC field
-            //
-            $editor = new TextEdit('og-abc_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-ABC', 'OG-ABC', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for OG-ABCD field
-            //
-            $editor = new TextEdit('og-abcd_edit');
-            $editor->SetMaxLength(64);
-            $editColumn = new CustomEditColumn('OG-ABCD', 'OG-ABCD', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
@@ -23612,14 +21631,6 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for updated field
-            //
-            $column = new DateTimeViewColumn('updated', 'updated', 'Updated', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d H:i:s');
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for BatchID field
             //
             $column = new NumberViewColumn('BatchID', 'BatchID', 'Batch ID', $this->dataset);
@@ -23634,6 +21645,8 @@
             //
             $column = new NumberViewColumn('Template', 'Template_id', 'Template', $this->dataset);
             $column->SetOrderable(true);
+            $column->setHrefTemplate('%Template%');
+            $column->setTarget('_self');
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
@@ -23696,58 +21709,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for Total Brews Calc 1 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 1', 'Total Brews Calc 1', 'Total Brews Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for Total Brews Calc 2 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 2', 'Total Brews Calc 2', 'Total Brews Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', 'Brew Date Start Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', 'Brew Date End Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', 'Brew Date Start Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', 'Brew Date End Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
             $grid->AddPrintColumn($column);
             
             //
@@ -23913,51 +21874,9 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for OG-A field
-            //
-            $column = new TextViewColumn('OG-A', 'OG-A', 'OG-A', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for OG-B field
-            //
-            $column = new TextViewColumn('OG-B', 'OG-B', 'OG-B', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for OG-C field
-            //
-            $column = new TextViewColumn('OG-C', 'OG-C', 'OG-C', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for OG-D field
-            //
-            $column = new TextViewColumn('OG-D', 'OG-D', 'OG-D', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for OG-AB field
             //
             $column = new TextViewColumn('OG-AB', 'OG-AB', 'OG-AB', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for OG-ABC field
-            //
-            $column = new TextViewColumn('OG-ABC', 'OG-ABC', 'OG-ABC', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for OG-ABCD field
-            //
-            $column = new TextViewColumn('OG-ABCD', 'OG-ABCD', 'OG-ABCD', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddPrintColumn($column);
             
@@ -24516,14 +22435,6 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for updated field
-            //
-            $column = new DateTimeViewColumn('updated', 'updated', 'Updated', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d H:i:s');
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for BatchID field
             //
             $column = new NumberViewColumn('BatchID', 'BatchID', 'Batch ID', $this->dataset);
@@ -24538,6 +22449,8 @@
             //
             $column = new NumberViewColumn('Template', 'Template_id', 'Template', $this->dataset);
             $column->SetOrderable(true);
+            $column->setHrefTemplate('%Template%');
+            $column->setTarget('_self');
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
@@ -24600,58 +22513,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for Total Brews Calc 1 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 1', 'Total Brews Calc 1', 'Total Brews Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for Total Brews Calc 2 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 2', 'Total Brews Calc 2', 'Total Brews Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', 'Brew Date Start Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', 'Brew Date End Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', 'Brew Date Start Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', 'Brew Date End Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
             $grid->AddExportColumn($column);
             
             //
@@ -24817,51 +22678,9 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for OG-A field
-            //
-            $column = new TextViewColumn('OG-A', 'OG-A', 'OG-A', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for OG-B field
-            //
-            $column = new TextViewColumn('OG-B', 'OG-B', 'OG-B', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for OG-C field
-            //
-            $column = new TextViewColumn('OG-C', 'OG-C', 'OG-C', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for OG-D field
-            //
-            $column = new TextViewColumn('OG-D', 'OG-D', 'OG-D', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for OG-AB field
             //
             $column = new TextViewColumn('OG-AB', 'OG-AB', 'OG-AB', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for OG-ABC field
-            //
-            $column = new TextViewColumn('OG-ABC', 'OG-ABC', 'OG-ABC', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for OG-ABCD field
-            //
-            $column = new TextViewColumn('OG-ABCD', 'OG-ABCD', 'OG-ABCD', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddExportColumn($column);
             
@@ -25410,14 +23229,6 @@
         private function AddCompareColumns(Grid $grid)
         {
             //
-            // View column for updated field
-            //
-            $column = new DateTimeViewColumn('updated', 'updated', 'Updated', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d H:i:s');
-            $grid->AddCompareColumn($column);
-            
-            //
             // View column for BatchID field
             //
             $column = new NumberViewColumn('BatchID', 'BatchID', 'Batch ID', $this->dataset);
@@ -25432,6 +23243,8 @@
             //
             $column = new NumberViewColumn('Template', 'Template_id', 'Template', $this->dataset);
             $column->SetOrderable(true);
+            $column->setHrefTemplate('%Template%');
+            $column->setTarget('_self');
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
@@ -25487,58 +23300,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for Total Brews Calc 1 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 1', 'Total Brews Calc 1', 'Total Brews Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for Total Brews Calc 2 field
-            //
-            $column = new NumberViewColumn('Total Brews Calc 2', 'Total Brews Calc 2', 'Total Brews Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 1', 'Brew Date Start Calc 1', 'Brew Date Start Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 1 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 1', 'Brew Date End Calc 1', 'Brew Date End Calc 1', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for Brew Date Start Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date Start Calc 2', 'Brew Date Start Calc 2', 'Brew Date Start Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for Brew Date End Calc 2 field
-            //
-            $column = new DateTimeViewColumn('Brew Date End Calc 2', 'Brew Date End Calc 2', 'Brew Date End Calc 2', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetDateTimeFormat('Y-m-d');
             $grid->AddCompareColumn($column);
             
             //
@@ -25704,51 +23465,9 @@
             $grid->AddCompareColumn($column);
             
             //
-            // View column for OG-A field
-            //
-            $column = new TextViewColumn('OG-A', 'OG-A', 'OG-A', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for OG-B field
-            //
-            $column = new TextViewColumn('OG-B', 'OG-B', 'OG-B', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for OG-C field
-            //
-            $column = new TextViewColumn('OG-C', 'OG-C', 'OG-C', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for OG-D field
-            //
-            $column = new TextViewColumn('OG-D', 'OG-D', 'OG-D', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
             // View column for OG-AB field
             //
             $column = new TextViewColumn('OG-AB', 'OG-AB', 'OG-AB', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for OG-ABC field
-            //
-            $column = new TextViewColumn('OG-ABC', 'OG-ABC', 'OG-ABC', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for OG-ABCD field
-            //
-            $column = new TextViewColumn('OG-ABCD', 'OG-ABCD', 'OG-ABCD', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddCompareColumn($column);
             
@@ -26488,39 +24207,6 @@
             );
             $lookupDataset->setOrderByField('id', 'ASC');
             $handler = new DynamicSearchHandler($lookupDataset, $this, 'filter_builder_Batches_Template_search', 'Template', 'id', null, 20);
-            GetApplication()->RegisterHTTPHandler($handler);
-            
-            $lookupDataset = new TableDataset(
-                MySqlIConnectionFactory::getInstance(),
-                GetConnectionOptions(),
-                '`Templates`');
-            $lookupDataset->addFields(
-                array(
-                    new IntegerField('id', true, true, true),
-                    new DateTimeField('updated', true),
-                    new StringField('Template', true, true),
-                    new StringField('Brand/Name', true),
-                    new StringField('Style'),
-                    new IntegerField('Color'),
-                    new IntegerField('IBU'),
-                    new IntegerField('OG_Avg'),
-                    new IntegerField('OG_Override'),
-                    new IntegerField('OG_Eq'),
-                    new IntegerField('ABV_Avg'),
-                    new IntegerField('ABV_Avg_Dec'),
-                    new IntegerField('ABV_Eq'),
-                    new IntegerField('Attenuation_Override'),
-                    new IntegerField('Attenuation_Override_Dec'),
-                    new IntegerField('Attenuation_Avg'),
-                    new IntegerField('Attenuation_Avg_Dec'),
-                    new IntegerField('Attenuation_Eq'),
-                    new IntegerField('FG_Eq'),
-                    new StringField('Notes'),
-                    new IntegerField('Batches')
-                )
-            );
-            $lookupDataset->setOrderByField('id', 'ASC');
-            $handler = new DynamicSearchHandler($lookupDataset, $this, 'edit_Batches_Template_search', 'Template', 'id', null, 20);
             GetApplication()->RegisterHTTPHandler($handler);
             
             $lookupDataset = new TableDataset(
